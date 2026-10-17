@@ -17,7 +17,10 @@ import com.example.a76239_studentregistrationapp.room.StudentDao
 import kotlinx.coroutines.launch
 
 @Composable
-fun RegistrationScreen(studentDao: StudentDao) {
+fun RegistrationScreen(
+    studentDao: StudentDao,
+    onBack: () -> Unit
+) {
 
     var name by remember { mutableStateOf("") }
     var course by remember { mutableStateOf("") }
@@ -111,5 +114,15 @@ fun RegistrationScreen(studentDao: StudentDao) {
         Spacer(modifier = Modifier.height(16.dp))
 
         Text(text = message)
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        OutlinedButton(
+            onClick = onBack,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text("Back to Homepage")
+        }
+
     }
 }

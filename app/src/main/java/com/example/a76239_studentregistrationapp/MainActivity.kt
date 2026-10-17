@@ -49,32 +49,24 @@ class MainActivity : ComponentActivity() {
                         )
                     }
 
+
                     composable("register") {
-                        RegistrationScreen(studentDao = studentDao)
+                        RegistrationScreen(
+                            studentDao = studentDao,
+                            onBack = { navController.popBackStack() }
+                        )
                     }
 
                     composable("search") {
-                        SearchScreen(studentDao = studentDao)
+                        SearchScreen(
+                            studentDao = studentDao,
+                            onBack = { navController.popBackStack() }
+                        )
                     }
+
                 }
 
             }
             }
         }
     }
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    _76239_StudentRegistrationAppTheme {
-        Greeting("Android")
-    }
-}

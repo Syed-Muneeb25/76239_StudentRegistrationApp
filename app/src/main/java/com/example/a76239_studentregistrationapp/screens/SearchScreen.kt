@@ -13,7 +13,10 @@ import com.example.a76239_studentregistrationapp.room.StudentDao
 import kotlinx.coroutines.launch
 
 @Composable
-fun SearchScreen(studentDao: StudentDao) {
+fun SearchScreen(
+    studentDao: StudentDao,
+    onBack: () -> Unit
+) {
 
     var studentId by remember { mutableStateOf("") }
     var result by remember { mutableStateOf("") }
@@ -73,5 +76,15 @@ fun SearchScreen(studentDao: StudentDao) {
         Spacer(modifier = Modifier.height(24.dp))
 
         Text(text = result)
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        OutlinedButton(
+            onClick = onBack,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text("Back to Homepage")
+        }
+
     }
 }
