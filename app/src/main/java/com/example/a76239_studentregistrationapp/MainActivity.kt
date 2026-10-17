@@ -10,6 +10,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.a76239_studentregistrationapp.screens.HomeScreen
 import com.example.a76239_studentregistrationapp.ui.theme._76239_StudentRegistrationAppTheme
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.example.a76239_studentregistrationapp.screens.RegistrationScreen
+import com.example.a76239_studentregistrationapp.screens.SearchScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,11 +22,34 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             _76239_StudentRegistrationAppTheme {
-                    HomeScreen(
-                        onAddStudent = { },
-                        onFindStudent = { }
-                    )
+
+                val navController = rememberNavController()
+
+                NavHost(
+                    navController = navController,
+                    startDestination = "home"
+                ) {
+                    composable("home") {
+                        HomeScreen(
+                            onAddStudent = {
+                                navController.navigate("register")
+                            },
+                            onFindStudent = {
+                                navController.navigate("search")
+                            }
+                        )
+                    }
+
+                    composable("register") {
+                        RegistrationScreen()
+                    }
+
+                    composable("search") {
+                        SearchScreen()
+                    }
                 }
+
+            }
             }
         }
     }
