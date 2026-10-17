@@ -54,7 +54,7 @@ class MainActivity : ComponentActivity() {
                     }
 
                     composable("search") {
-                        SearchScreen()
+                        SearchScreen(studentDao = studentDao)
                     }
                 }
 
