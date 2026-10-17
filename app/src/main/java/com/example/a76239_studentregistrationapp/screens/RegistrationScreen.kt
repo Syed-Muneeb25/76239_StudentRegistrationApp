@@ -2,8 +2,90 @@ package com.example.a76239_studentregistrationapp.screens
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 @Composable
 fun RegistrationScreen() {
-    Text("Student Registration Page")
+
+    var name by remember { mutableStateOf("") }
+    var course by remember { mutableStateOf("") }
+    var year by remember { mutableStateOf("") }
+    var message by remember { mutableStateOf("") }
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(24.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+
+        Text(
+            text = "Student Registration",
+            fontSize = 26.sp
+        )
+
+        Spacer(modifier = Modifier.height(24.dp))
+
+        OutlinedTextField(
+            value = name,
+            onValueChange = { name = it },
+            label = { Text("Student Name") },
+            modifier = Modifier.fillMaxWidth()
+        )
+
+        Spacer(modifier = Modifier.height(12.dp))
+
+        OutlinedTextField(
+            value = course,
+            onValueChange = { course = it },
+            label = { Text("Course") },
+            modifier = Modifier.fillMaxWidth()
+        )
+
+        Spacer(modifier = Modifier.height(12.dp))
+
+        OutlinedTextField(
+            value = year,
+            onValueChange = { year = it },
+            label = { Text("Year (1-4)") },
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Number
+            ),
+            modifier = Modifier.fillMaxWidth()
+        )
+
+        Spacer(modifier = Modifier.height(24.dp))
+
+        Button(
+            onClick = {
+                val studentYear = year.toIntOrNull()
+
+                message = when {
+                    name.isBlank() || course.isBlank() ->
+                        "Please fill in all fields"
+
+                    studentYear == null || studentYear !in 1..4 ->
+                        "Year must be between 1 and 4"
+
+                    else -> "Student details are valid"
+                }
+            },
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text("REGISTER STUDENT")
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Text(text = message)
+    }
 }

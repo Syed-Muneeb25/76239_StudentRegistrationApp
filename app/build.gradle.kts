@@ -45,6 +45,7 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation("androidx.navigation:navigation-compose:2.9.5")
     testImplementation(libs.junit)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
@@ -52,5 +53,7 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     debugImplementation(libs.androidx.compose.ui.tooling)
-    implementation("androidx.navigation:navigation-compose:2.9.5")
+    implementation("androidx.room:room-runtime:2.8.4")
+    implementation("androidx.room:room-ktx:2.8.4")
+    ksp("androidx.room:room-compiler:2.8.4")
 }
