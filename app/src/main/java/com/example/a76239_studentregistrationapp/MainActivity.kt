@@ -15,9 +15,18 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.a76239_studentregistrationapp.screens.RegistrationScreen
 import com.example.a76239_studentregistrationapp.screens.SearchScreen
+import androidx.room.Room
+import com.example.a76239_studentregistrationapp.room.StudentDatabase
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        val database = Room.databaseBuilder(
+            applicationContext,
+            StudentDatabase::class.java,
+            "student_database"
+        ).build()
+
+        val studentDao = database.studentDao()
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
@@ -41,7 +50,7 @@ class MainActivity : ComponentActivity() {
                     }
 
                     composable("register") {
-                        RegistrationScreen()
+                        RegistrationScreen(studentDao = studentDao)
                     }
 
                     composable("search") {

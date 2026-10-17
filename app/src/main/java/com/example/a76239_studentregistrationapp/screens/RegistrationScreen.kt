@@ -11,14 +11,20 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.runtime.rememberCoroutineScope
+import com.example.a76239_studentregistrationapp.room.Student
+import com.example.a76239_studentregistrationapp.room.StudentDao
+import kotlinx.coroutines.launch
 
 @Composable
-fun RegistrationScreen() {
+fun RegistrationScreen(studentDao: StudentDao) {
 
     var name by remember { mutableStateOf("") }
     var course by remember { mutableStateOf("") }
     var year by remember { mutableStateOf("") }
     var message by remember { mutableStateOf("") }
+    val scope = rememberCoroutineScope()
+
 
     Column(
         modifier = Modifier
@@ -76,7 +82,25 @@ fun RegistrationScreen() {
                     studentYear == null || studentYear !in 1..4 ->
                         "Year must be between 1 and 4"
 
-                    else -> "Student details are valid"
+                    else -> {
+                        scope.launch {
+                            val id = studentDao.insertStudent(
+                                Student(
+                                    name = name.trim(),
+                                    course = course.trim(),
+                                    year = studentYear
+                                )
+                            )
+
+                            message = "Student registered successfully! ID: $id"
+
+                            name = ""
+                            course = ""
+                            year = ""
+                        }
+
+                        ""
+                    }
                 }
             },
             modifier = Modifier.fillMaxWidth()
