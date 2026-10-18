@@ -53,7 +53,7 @@ fun SearchScreen(
         Spacer(modifier = Modifier.height(20.dp))
 
         Button(
-            onClick = {
+            onClick = {  //search for student ID
                 val id = studentId.toIntOrNull()
 
                 if (id == null || id <= 0) {

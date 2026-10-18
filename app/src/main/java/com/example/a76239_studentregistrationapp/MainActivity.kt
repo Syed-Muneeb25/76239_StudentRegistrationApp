@@ -4,10 +4,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import com.example.a76239_studentregistrationapp.screens.HomeScreen
 import com.example.a76239_studentregistrationapp.ui.theme._76239_StudentRegistrationAppTheme
 import androidx.navigation.compose.NavHost
@@ -25,7 +21,7 @@ class MainActivity : ComponentActivity() {
             StudentDatabase::class.java,
             "student_database"
         ).build()
-
+// connects to database
         val studentDao = database.studentDao()
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -34,7 +30,7 @@ class MainActivity : ComponentActivity() {
 
                 val navController = rememberNavController()
 
-                NavHost(
+                NavHost(  //handles navigation between screens
                     navController = navController,
                     startDestination = "home"
                 ) {

@@ -8,6 +8,6 @@ import androidx.room.RoomDatabase
     version = 1,
     exportSchema = false
 )
-abstract class StudentDatabase : RoomDatabase() {
+abstract class StudentDatabase : RoomDatabase() {  //Room database for storing records
     abstract fun studentDao(): StudentDao
 }

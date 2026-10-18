@@ -80,16 +80,16 @@ fun RegistrationScreen(
             onClick = {
                 val studentYear = year.toIntOrNull()
 
-                message = when {
+                message = when {  //checks for errors
                     name.isBlank() || course.isBlank() ->
                         "Please fill in all fields"
 
-                    studentYear == null || studentYear !in 1..4 ->
+                    studentYear == null || studentYear !in 1..4 ->  //check for year between 1 and 4
                         "Year must be between 1 and 4"
 
                     else -> {
                         scope.launch {
-                            val id = studentDao.insertStudent(
+                            val id = studentDao.insertStudent( //saves student info into database
                                 Student(
                                     name = name.trim(),
                                     course = course.trim(),

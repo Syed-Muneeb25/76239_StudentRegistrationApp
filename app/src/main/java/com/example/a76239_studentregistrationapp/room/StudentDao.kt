@@ -4,7 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 
-@Dao
+@Dao  //fuctions to save and search students
 interface StudentDao {
 
     @Insert

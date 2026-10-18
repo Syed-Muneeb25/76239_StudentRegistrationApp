@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "students")
-data class Student(
+data class Student(  //student information stored in database
     @PrimaryKey(autoGenerate = true)
     val studentId: Int = 0,
     val name: String,
