@@ -7,6 +7,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.graphics.Color
+import androidx.compose.material3.ButtonDefaults
 
 @Composable
 fun HomeScreen(
@@ -36,7 +38,10 @@ fun HomeScreen(
 
         Button(
             onClick = onAddStudent,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+                    colors = ButtonDefaults.buttonColors(
+                    containerColor = Color(0xFF7B2CBF),
+            contentColor = Color.White )
         ) {
             Text("ADD STUDENT")
         }
@@ -45,7 +50,10 @@ fun HomeScreen(
 
         Button(
             onClick = onFindStudent,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color(0xFF7B2CBF),
+                contentColor = Color.White )
         ) {
             Text("FIND STUDENT")
         }

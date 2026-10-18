@@ -15,6 +15,8 @@ import androidx.compose.runtime.rememberCoroutineScope
 import com.example.a76239_studentregistrationapp.room.Student
 import com.example.a76239_studentregistrationapp.room.StudentDao
 import kotlinx.coroutines.launch
+import androidx.compose.ui.graphics.Color
+import androidx.compose.material3.ButtonDefaults
 
 @Composable
 fun RegistrationScreen(
@@ -106,7 +108,10 @@ fun RegistrationScreen(
                     }
                 }
             },
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color(0xFF7B2CBF),
+                contentColor = Color.White )
         ) {
             Text("REGISTER STUDENT")
         }
@@ -119,7 +124,10 @@ fun RegistrationScreen(
 
         OutlinedButton(
             onClick = onBack,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color(0xFF7B2CBF),
+                contentColor = Color.White )
         ) {
             Text("Back to Homepage")
         }

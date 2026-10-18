@@ -11,6 +11,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.a76239_studentregistrationapp.room.StudentDao
 import kotlinx.coroutines.launch
+import androidx.compose.ui.graphics.Color
+import androidx.compose.material3.ButtonDefaults
 
 @Composable
 fun SearchScreen(
@@ -68,7 +70,10 @@ fun SearchScreen(
                     }
                 }
             },
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color(0xFF7B2CBF),
+                contentColor = Color.White )
         ) {
             Text("SEARCH STUDENT")
         }
@@ -81,7 +86,10 @@ fun SearchScreen(
 
         OutlinedButton(
             onClick = onBack,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color(0xFF7B2CBF),
+                contentColor = Color.White )
         ) {
             Text("Back to Homepage")
         }
